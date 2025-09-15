@@ -3,6 +3,7 @@ defmodule Estagiei.Repo.Migrations.CreateInternships do
 
   def change do
     create table(:internships) do
+      add :id, :uuid, primary_key: true
       add :company, :string
       add :description, :string
       add :title, :string

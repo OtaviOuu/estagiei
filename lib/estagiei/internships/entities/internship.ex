@@ -2,6 +2,8 @@ defmodule Estagiei.Internships.Entities.Internship do
   use Ecto.Schema
   import Ecto.Changeset
 
+  @fields [:company, :description, :title, :url]
+  @primary_key {:id, :binary_id, autogenerate: true}
   schema "internships" do
     field :company, :string
     field :description, :string
@@ -14,7 +16,7 @@ defmodule Estagiei.Internships.Entities.Internship do
   @doc false
   def changeset(internship, attrs) do
     internship
-    |> cast(attrs, [:company, :description, :title, :url])
-    |> validate_required([:company, :description, :title, :url])
+    |> cast(attrs, @fields)
+    |> validate_required(@fields)
   end
 end
