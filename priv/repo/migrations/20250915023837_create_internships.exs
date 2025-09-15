@@ -2,8 +2,7 @@ defmodule Estagiei.Repo.Migrations.CreateInternships do
   use Ecto.Migration
 
   def change do
-    create table(:internships) do
-      add :id, :uuid, primary_key: true
+    create table(:internships, primary_key: false) do
       add :company, :string
       add :description, :string
       add :title, :string

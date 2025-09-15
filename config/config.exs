@@ -11,6 +11,10 @@ config :estagiei,
   ecto_repos: [Estagiei.Repo],
   generators: [timestamp_type: :utc_datetime]
 
+config :estagiei, Estagiei.Repo,
+  migration_primary_key: [name: :id, type: :binary_id],
+  migration_foreign_key: [type: :binary_id]
+
 # Configures the endpoint
 config :estagiei, EstagieiWeb.Endpoint,
   url: [host: "localhost"],
