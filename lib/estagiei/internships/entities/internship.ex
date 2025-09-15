@@ -3,6 +3,7 @@ defmodule Estagiei.Internships.Entities.Internship do
   import Ecto.Changeset
 
   @fields [:company, :description, :title, :url]
+  @primary_key {:id, :binary_id, autogenerate: true}
   schema "internships" do
     field :company, :string
     field :description, :string
