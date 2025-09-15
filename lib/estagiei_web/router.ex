@@ -20,6 +20,12 @@ defmodule EstagieiWeb.Router do
     get "/", PageController, :home
   end
 
+  scope "/estagios", EstagieiWeb do
+    pipe_through :browser
+
+    live "/", EstagioLive.Index, :index
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", EstagieiWeb do
   #   pipe_through :api

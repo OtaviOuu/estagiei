@@ -9,3 +9,13 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+alias Estagiei.Internships.Repositories.InternshipRepository
+
+%{
+  title: "Estágio em Desenvolvimento Web",
+  description:
+    "Oportunidade para estagiários interessados em desenvolvimento web com Elixir e Phoenix.",
+  company: "Tech Solutions",
+  url: "https://techsolutions.com.br/carreiras"
+}
+|> InternshipRepository.create_internship()
