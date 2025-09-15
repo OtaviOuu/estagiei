@@ -14,7 +14,7 @@ defmodule Estagiei.Internships.Entities.Internship do
   end
 
   @doc false
-  def changeset(internship, attrs) do
+  def changeset(internship \\ %__MODULE__{}, attrs) do
     internship
     |> cast(attrs, @fields)
     |> validate_required(@fields)
