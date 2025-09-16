@@ -81,7 +81,7 @@ defmodule EstagieiWeb.EstagioLive.Index do
   def job_info_card(assigns) do
     ~H"""
     <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-      <div class="card-body">
+      <div phx-click="handle_job_click" phx-value-id={@internship.id} class="card-body cursor-pointer">
         <div class="flex items-start justify-between mb-4">
           <div class="flex items-center">
             <div class="avatar placeholder mr-3">
@@ -185,5 +185,13 @@ defmodule EstagieiWeb.EstagioLive.Index do
       </div>
     </div>
     """
+  end
+
+  def handle_event("handle_job_click", %{"id" => job_id}, socket) do
+    socket =
+      socket
+      |> push_navigate(to: ~p"/estagios/#{job_id}")
+
+    {:noreply, socket}
   end
 end

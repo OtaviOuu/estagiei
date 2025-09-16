@@ -26,6 +26,7 @@ defmodule EstagieiWeb.Router do
     pipe_through :browser
 
     live "/", EstagioLive.Index, :index
+    live "/:id", EstagioLive.Show, :show
   end
 
   # Other scopes may use custom stacks.
