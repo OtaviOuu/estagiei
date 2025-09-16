@@ -5,7 +5,7 @@ defmodule Estagiei.Internships.Entities.Internship do
   @fields [:company, :description, :title, :url]
   @primary_key {:id, :binary_id, autogenerate: true}
   schema "internships" do
-    field :company, :string
+    field :company, :string, default: "USP - EESC"
     field :description, :string
     field :title, :string
     field :url, :string

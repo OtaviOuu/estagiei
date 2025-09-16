@@ -3,14 +3,25 @@ defmodule Estagiei.Workers.UspEescWorker do
 
   alias Estagiei.Crawlers.Core.UspEesc.ExtractAllJobs
   alias Estagiei.Crawlers.Core.UspEesc.FilterForNewJobs
+  alias Estagiei.Internships.Repositories.InternshipRepository
 
   @impl Oban.Worker
+  @spec perform(any()) :: :error | :ok
   def perform(_args) do
-    jobs =
+    {:ok, jobs_attrs} =
       ExtractAllJobs.call()
       |> FilterForNewJobs.call()
 
-    IO.inspect(jobs, label: "New USP EESC Jobs")
-    :ok
+    jobs_attrs
+    |> Enum.each(fn job_attr ->
+      case InternshipRepository.create_internship(job_attr) do
+        {:ok, _internship} ->
+          :error
+
+        {:error, changeset} ->
+          IO.inspect(changeset.errors, label: "Failed to create internship")
+          {:error, "Failed to create internship"}
+      end
+    end)
   end
 end

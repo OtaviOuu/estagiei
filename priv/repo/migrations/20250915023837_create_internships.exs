@@ -4,7 +4,7 @@ defmodule Estagiei.Repo.Migrations.CreateInternships do
   def change do
     create table(:internships) do
       add :company, :string
-      add :description, :string
+      add :description, :text
       add :title, :string
       add :url, :string
 

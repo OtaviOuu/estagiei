@@ -9,6 +9,7 @@ import Config
 
 config :estagiei, Oban,
   repo: Estagiei.Repo,
+  queues: [default: 10],
   plugins: [
     {Oban.Plugins.Cron,
      crontab: [
