@@ -11,6 +11,7 @@ defmodule Estagiei.Application do
       EstagieiWeb.Telemetry,
       Estagiei.Repo,
       {DNSCluster, query: Application.get_env(:estagiei, :dns_cluster_query) || :ignore},
+      {Oban, Application.fetch_env!(:estagiei, Oban)},
       {Phoenix.PubSub, name: Estagiei.PubSub},
       # Start a worker by calling: Estagiei.Worker.start_link(arg)
       # {Estagiei.Worker, arg},

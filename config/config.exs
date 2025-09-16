@@ -7,6 +7,15 @@
 # General application configuration
 import Config
 
+config :estagiei, Oban,
+  repo: Estagiei.Repo,
+  plugins: [
+    {Oban.Plugins.Cron,
+     crontab: [
+       {"* * * * *", Estagiei.Workers.UspEescWorker}
+     ]}
+  ]
+
 config :estagiei,
   ecto_repos: [Estagiei.Repo],
   generators: [timestamp_type: :utc_datetime]

@@ -1,4 +1,5 @@
 import Config
+config :estagiei, Oban, testing: :manual
 
 # Configure your database
 #
