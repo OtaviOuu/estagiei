@@ -5,9 +5,10 @@ defmodule Estagiei.Internships.Entities.Internship do
   @fields [:company, :description, :title, :url]
   @primary_key {:id, :binary_id, autogenerate: true}
   schema "internships" do
-    field :company, :string, default: "USP - EESC"
+    field :company, :string
     field :description, :string
     field :title, :string
+    field :slug, :string
     field :url, :string
 
     timestamps(type: :utc_datetime)

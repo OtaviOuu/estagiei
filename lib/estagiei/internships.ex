@@ -3,4 +3,5 @@ defmodule Estagiei.Internships do
 
   defdelegate list_internships, to: InternshipRepository, as: :list_internships
   defdelegate get_internship!(id), to: InternshipRepository, as: :get_internship!
+  defdelegate create_internship(attrs), to: InternshipRepository, as: :create_internship
 end

@@ -9,15 +9,6 @@ defmodule EstagieiWeb.EstagioLive.Index do
   def render(assigns) do
     ~H"""
     <Layouts.app flash={@flash}>
-      <div class="hero bg-gradient-to-r from-primary to-secondary text-primary-content py-16">
-        <div class="hero-content text-center">
-          <div class="max-w-md">
-            <h1 class="text-5xl font-bold mb-4">Estágios</h1>
-            <p class="text-lg opacity-90">Encontre as melhores oportunidades de estágio</p>
-          </div>
-        </div>
-      </div>
-
       <div class="bg-base-100 sticky top-0 z-10 shadow-sm border-b border-base-200">
         <div class="container mx-auto px-4 py-4">
           <div class="flex flex-wrap gap-4 items-center justify-between">
@@ -93,7 +84,7 @@ defmodule EstagieiWeb.EstagioLive.Index do
               <h2 class="card-title text-lg font-bold line-clamp-2">
                 {@internship.title}
               </h2>
-              <p class="text-sm text-base-content/70">Empresa XYZ</p>
+              <p class="text-sm text-base-content/70">{@internship.slug}</p>
             </div>
           </div>
           <div class="dropdown dropdown-end">

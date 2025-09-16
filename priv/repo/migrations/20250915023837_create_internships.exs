@@ -6,6 +6,7 @@ defmodule Estagiei.Repo.Migrations.CreateInternships do
       add :company, :string
       add :description, :text
       add :title, :string
+      add :slug, :string
       add :url, :string
 
       timestamps(type: :utc_datetime)

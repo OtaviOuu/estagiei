@@ -41,7 +41,20 @@ defmodule Estagiei.Crawlers.Core.UspEesc.ExtractAllJobs do
     %{
       title: title,
       description: description,
+      slug: generate_slug(title),
+      company: "USP - EESC",
       url: "#{@main_page_url}/#{href}"
     }
+  end
+
+  defp generate_slug(title) when is_binary(title) do
+    title
+    |> String.downcase()
+    |> String.normalize(:nfd)
+    |> String.replace(~r/[\p{Mn}]/u, "")
+    |> String.replace(~r/[^\w\s-]/u, "")
+    |> String.replace(~r/\s+/, "-")
+    |> String.replace(~r/-+/, "-")
+    |> String.trim("-")
   end
 end
