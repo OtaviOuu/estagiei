@@ -74,20 +74,18 @@ defmodule EstagieiWeb.EstagioLive.Index do
     <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
       <div phx-click="handle_job_click" phx-value-id={@internship.id} class="card-body cursor-pointer">
         <div class="flex items-start justify-between mb-4">
-          <div class="flex items-center">
-            <div class="avatar placeholder mr-3">
-              <div class="bg-primary text-primary-content rounded-full w-12">
-                <span class="text-xl font-bold">{String.first(@internship.title)}</span>
+          <div class="flex-1">
+            <div class="flex items-start justify-between">
+              <div>
+                <h2 class="card-title text-lg font-bold line-clamp-2">
+                  {@internship.title}
+                </h2>
+                <p class="text-sm text-base-content/70">{@internship.slug}</p>
               </div>
             </div>
-            <div>
-              <h2 class="card-title text-lg font-bold line-clamp-2">
-                {@internship.title}
-              </h2>
-              <p class="text-sm text-base-content/70">{@internship.slug}</p>
-            </div>
           </div>
-          <div class="dropdown dropdown-end">
+          <!-- Menu dropdown -->
+          <div class="dropdown dropdown-end flex-shrink-0 ml-2">
             <label tabindex="0" class="btn btn-ghost btn-sm btn-circle">
               <.icon name="hero-ellipsis-vertical" class="w-4 h-4" />
             </label>
@@ -101,17 +99,20 @@ defmodule EstagieiWeb.EstagioLive.Index do
             </ul>
           </div>
         </div>
-
+        
+    <!-- Tags/Badges -->
         <div class="flex flex-wrap gap-2 mb-4">
           <div class="badge badge-primary badge-sm">Tecnologia</div>
           <div class="badge badge-secondary badge-sm">Remoto</div>
           <div class="badge badge-accent badge-sm">Meio período</div>
         </div>
-
+        
+    <!-- Descrição -->
         <p class="text-sm text-base-content/80 mb-4 line-clamp-3">
           Oportunidade única de estágio em uma empresa inovadora. Desenvolva suas habilidades em um ambiente colaborativo e dinâmico.
         </p>
-
+        
+    <!-- Informações adicionais -->
         <div class="space-y-2 mb-4">
           <div class="flex items-center text-sm text-base-content/70">
             <.icon name="hero-map-pin" class="w-4 h-4 mr-2" /> São Paulo, SP
@@ -123,20 +124,27 @@ defmodule EstagieiWeb.EstagioLive.Index do
             <.icon name="hero-clock" class="w-4 h-4 mr-2" /> Publicado há 2 dias
           </div>
         </div>
-
+        
+    <!-- Ações do card -->
         <div class="card-actions justify-end">
-          <button class="btn btn-ghost btn-sm">
-            <.icon name="hero-heart" class="w-4 h-4" />
-          </button>
-          <button class="btn btn-ghost btn-sm">
-            <.icon name="hero-share" class="w-4 h-4" />
-          </button>
-          <button class="btn btn-primary btn-sm">
-            Candidatar-se
-          </button>
+          
+    <!-- Logo da Universidade como tag -->
+          <div class="flex-shrink-0 ml-2">
+            <div class="flex items-center gap-1 bg-base-200 rounded-full px-2 py-1 border">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmqA3GPtvSBXShKTapJzheR0q8q6VudcI3MQ&s"
+                alt="Logo da Universidade"
+                class="w-5 h-5 rounded-full object-cover"
+              />
+              <span class="text-xs font-medium text-base-content/80">
+                EESC - USP
+              </span>
+            </div>
+          </div>
         </div>
       </div>
-
+      
+    <!-- Barra colorida no topo -->
       <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-secondary rounded-t-2xl">
       </div>
     </div>
