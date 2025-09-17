@@ -4,6 +4,7 @@ defmodule Estagiei.Workers.UspEescWorker do
   alias Estagiei.Crawlers.Core.UspEesc.ExtractAllJobs
   alias Estagiei.Crawlers.Core.UspEesc.FilterForNewJobs
   alias Estagiei.Internships
+  alias Estagiei.Repo
 
   @impl Oban.Worker
   def perform(_args) do
@@ -11,7 +12,11 @@ defmodule Estagiei.Workers.UspEescWorker do
       ExtractAllJobs.call()
       |> FilterForNewJobs.call()
 
-    jobs_attrs
-    |> Enum.each(&Internships.create_internship(&1))
+    Repo.transact(fn ->
+      jobs_attrs
+      |> Enum.each(&Internships.create_internship(&1))
+
+      {:ok, :done}
+    end)
   end
 end
