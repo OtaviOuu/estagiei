@@ -1,7 +1,7 @@
-defmodule Estagiei.Workers.UspEescWorker do
+defmodule Estagiei.Workers.UspFearpWorker do
   use Oban.Worker, queue: :default, max_attempts: 3
 
-  alias Estagiei.Crawlers.Core.UspEesc.ExtractAllJobs
+  alias Estagiei.Crawlers.Core.UspFearp.ExtractAllJobs
   alias Estagiei.Crawlers.FilterForNewJobs
   alias Estagiei.Internships
   alias Estagiei.Repo
@@ -13,6 +13,8 @@ defmodule Estagiei.Workers.UspEescWorker do
       |> FilterForNewJobs.call()
 
     Repo.transact(fn ->
+      IO.inspect(jobs_attrs, label: "New USP FEARP Jobs Found")
+
       jobs_attrs
       |> Enum.each(&Internships.create_internship(&1))
 

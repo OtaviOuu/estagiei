@@ -25,7 +25,8 @@ defmodule Estagiei.Internships.Repositories.InternshipRepositoryTest do
         description: "some description",
         title: "some title",
         url: "some url",
-        company: "some company"
+        company: "some company",
+        slug: "some-title-usp-fearp"
       }
 
       assert {:ok, %Internship{} = internship} =

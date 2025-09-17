@@ -14,7 +14,8 @@ defmodule Estagiei.InternshipsFixtures do
         company: "some company",
         description: "some description",
         title: "some title",
-        url: "some url"
+        url: "some url",
+        slug: "some-title-usp-fearp"
       })
       |> Estagiei.Internships.Repositories.InternshipRepository.create_internship()
 

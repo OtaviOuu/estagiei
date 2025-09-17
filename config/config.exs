@@ -13,6 +13,7 @@ config :estagiei, Oban,
   plugins: [
     {Oban.Plugins.Cron,
      crontab: [
+       {"* * * * *", Estagiei.Workers.UspFearpWorker},
        {"* * * * *", Estagiei.Workers.UspEescWorker}
      ]}
   ]
