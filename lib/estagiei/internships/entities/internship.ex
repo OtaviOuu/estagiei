@@ -2,7 +2,7 @@ defmodule Estagiei.Internships.Entities.Internship do
   use Ecto.Schema
   import Ecto.Changeset
 
-  @fields [:company, :description, :title, :url]
+  @fields [:company, :description, :title, :url, :slug]
   @primary_key {:id, :binary_id, autogenerate: true}
   schema "internships" do
     field :company, :string
@@ -19,5 +19,6 @@ defmodule Estagiei.Internships.Entities.Internship do
     internship
     |> cast(attrs, @fields)
     |> validate_required(@fields)
+    |> unique_constraint(:slug)
   end
 end

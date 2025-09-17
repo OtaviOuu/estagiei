@@ -3,7 +3,7 @@ defmodule EstagieiWeb.EstagioLive.Show do
 
   alias Estagiei.Internships
 
-  def mount(%{"id" => id}, _session, socket) do
+  def mount(%{"id" => _id}, _session, socket) do
     json_string = "{
       \"company\": \"CloudWalk\",
       \"title\": \"Robotics Research & Development Engineer – Humanoid Robotics\",
@@ -114,7 +114,7 @@ defmodule EstagieiWeb.EstagioLive.Show do
                   </ul>
                 </div>
               </div>
-
+              
     <!-- Requirements -->
               <div class="card bg-base-100 shadow-xl">
                 <div class="card-body">
@@ -141,7 +141,7 @@ defmodule EstagieiWeb.EstagioLive.Show do
                   </ul>
                 </div>
               </div>
-
+              
     <!-- Bonus Points -->
               <div class="card bg-base-100 shadow-xl">
                 <div class="card-body">
@@ -169,7 +169,7 @@ defmodule EstagieiWeb.EstagioLive.Show do
                 </div>
               </div>
             </div>
-
+            
     <!-- Sidebar -->
             <div class="space-y-8">
               <!-- Division Info -->
@@ -179,7 +179,7 @@ defmodule EstagieiWeb.EstagioLive.Show do
                   <p class="text-lg font-semibold">{@internship["metadata"]["division"]}</p>
                 </div>
               </div>
-
+              
     <!-- Apply Button -->
               <div class="card bg-base-100 shadow-xl">
                 <div class="card-body text-center">
@@ -202,7 +202,7 @@ defmodule EstagieiWeb.EstagioLive.Show do
                   </a>
                 </div>
               </div>
-
+              
     <!-- Recruiting Process -->
               <div class="card bg-base-100 shadow-xl">
                 <div class="card-body">
@@ -234,7 +234,7 @@ defmodule EstagieiWeb.EstagioLive.Show do
                   </ul>
                 </div>
               </div>
-
+              
     <!-- Important Notes -->
               <div class="alert alert-info shadow-lg">
                 <svg class="stroke-current shrink-0 w-6 h-6" fill="none" viewBox="0 0 24 24">
@@ -253,7 +253,7 @@ defmodule EstagieiWeb.EstagioLive.Show do
                   </div>
                 </div>
               </div>
-
+              
     <!-- Diversity & Inclusion -->
               <div class="card bg-base-100 shadow-xl">
                 <div class="card-body">

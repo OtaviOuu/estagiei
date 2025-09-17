@@ -5,6 +5,8 @@ defmodule Estagiei.Crawlers.Core.UspEesc.ExtractAllJobs do
   @domain "https://eesc.usp.br"
   @main_page_url "#{@domain}/estagios"
 
+  @slug_suffix "-usp-eesc"
+
   def call do
     with {:ok, html} <- HttpClient.get("#{@main_page_url}/posts.php"),
          {:ok, document} <- Parser.parse_html(html) do
@@ -47,7 +49,7 @@ defmodule Estagiei.Crawlers.Core.UspEesc.ExtractAllJobs do
     }
   end
 
-  defp generate_slug(title) when is_binary(title) do
+  defp generate_slug(title) do
     title
     |> String.downcase()
     |> String.normalize(:nfd)
@@ -56,5 +58,6 @@ defmodule Estagiei.Crawlers.Core.UspEesc.ExtractAllJobs do
     |> String.replace(~r/\s+/, "-")
     |> String.replace(~r/-+/, "-")
     |> String.trim("-")
+    |> String.replace_suffix("", @slug_suffix)
   end
 end

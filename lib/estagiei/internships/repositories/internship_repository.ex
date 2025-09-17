@@ -52,7 +52,7 @@ defmodule Estagiei.Internships.Repositories.InternshipRepository do
   def create_internship(attrs) do
     %Internship{}
     |> Internship.changeset(attrs)
-    |> Repo.insert()
+    |> Repo.insert(on_conflict: :nothing, conflict_target: :slug)
   end
 
   @doc """
