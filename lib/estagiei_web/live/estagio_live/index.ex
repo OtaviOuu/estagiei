@@ -84,20 +84,6 @@ defmodule EstagieiWeb.EstagioLive.Index do
               </div>
             </div>
           </div>
-          <!-- Menu dropdown -->
-          <div class="dropdown dropdown-end flex-shrink-0 ml-2">
-            <label tabindex="0" class="btn btn-ghost btn-sm btn-circle">
-              <.icon name="hero-ellipsis-vertical" class="w-4 h-4" />
-            </label>
-            <ul
-              tabindex="0"
-              class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
-            >
-              <li><a>Ver detalhes</a></li>
-              <li><a>Editar</a></li>
-              <li><a>Excluir</a></li>
-            </ul>
-          </div>
         </div>
         
     <!-- Tags/Badges -->
