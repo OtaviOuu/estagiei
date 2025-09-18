@@ -17,8 +17,22 @@ defmodule Estagiei.Internships.Repositories.InternshipRepository do
       [%Internship{}, ...]
 
   """
-  def list_internships do
-    Repo.all(Internship)
+  def list_internships(opts \\ []) do
+    case Keyword.get(opts, :search) do
+      nil ->
+        Repo.all(Internship)
+
+      "" ->
+        Repo.all(Internship)
+
+      search ->
+        like_pattern = "%#{search}%"
+
+        Internship
+        |> order_by(desc: :inserted_at)
+        |> where([i], ilike(i.title, ^like_pattern))
+        |> Repo.all()
+    end
   end
 
   @doc """
