@@ -55,7 +55,7 @@ defmodule EstagieiWeb.Layouts do
       </div>
     </div>
 
-    <main class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+    <main class="mx-auto max-w-full sm:px-6 lg:px-8">
       {render_slot(@inner_block)}
     </main>
 
