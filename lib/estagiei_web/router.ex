@@ -19,7 +19,7 @@ defmodule EstagieiWeb.Router do
   scope "/", EstagieiWeb do
     pipe_through :browser
 
-    get "/", PageController, :home
+    get "/", RedirectController, :to_index
   end
 
   scope "/estagios", EstagieiWeb do
