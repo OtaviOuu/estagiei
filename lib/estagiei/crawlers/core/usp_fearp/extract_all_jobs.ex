@@ -25,14 +25,23 @@ defmodule Estagiei.Crawlers.Core.UspFearp.ExtractAllJobs do
 
   defp extract_job_details(job) do
     href = Floki.attribute(job, "href") |> List.first()
+
+    job_url = "#{@domain}#{href}"
+
     title = Floki.text(job) |> String.trim()
+
+    description =
+      case String.ends_with?(job_url, ".pdf") do
+        true -> nil
+        false -> "Acesse a vaga em: #{job_url}"
+      end
 
     %{
       title: title,
       slug: generate_slug(title),
       company: "USP - FEARP",
-      description: "desd",
-      url: "#{@domain}#{href}"
+      description: description,
+      url: job_url
     }
   end
 

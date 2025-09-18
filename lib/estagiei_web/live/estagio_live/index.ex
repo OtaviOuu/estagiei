@@ -3,7 +3,7 @@ defmodule EstagieiWeb.EstagioLive.Index do
   alias Estagiei.Internships
 
   def mount(_params, _session, socket) do
-    search_form = to_form(%{search: ""})
+    search_form = to_form(%{"search" => ""})
 
     socket =
       socket

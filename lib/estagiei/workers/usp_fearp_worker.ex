@@ -13,8 +13,6 @@ defmodule Estagiei.Workers.UspFearpWorker do
       |> FilterForNewJobs.call()
 
     Repo.transact(fn ->
-      IO.inspect(jobs_attrs, label: "New USP FEARP Jobs Found")
-
       jobs_attrs
       |> Enum.each(&Internships.create_internship(&1))
 

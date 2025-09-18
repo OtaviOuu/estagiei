@@ -11,10 +11,23 @@ defmodule EstagieiWeb.EstagioLive.Show do
     ~H"""
     <Layouts.app flash={@flash}>
       <h1>{@internship.title}</h1>
-      <div>
-        {@internship.description |> raw()}
-      </div>
+      <.description :if={@internship.description} internship={@internship} />
+      <.pdf :if={!@internship.description} internship={@internship} />
     </Layouts.app>
+    """
+  end
+
+  defp pdf(assigns) do
+    ~H"""
+    <iframe src={@internship.url} width="100%" height="800px"></iframe>
+    """
+  end
+
+  defp description(assigns) do
+    ~H"""
+    <div class="prose max-w-none">
+      {raw(@internship.description)}
+    </div>
     """
   end
 end
