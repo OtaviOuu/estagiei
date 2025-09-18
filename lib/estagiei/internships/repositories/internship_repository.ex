@@ -36,6 +36,7 @@ defmodule Estagiei.Internships.Repositories.InternshipRepository do
 
   """
   def get_internship!(id), do: Repo.get!(Internship, id)
+  def get_internship_by_slug!(slug), do: Repo.get_by!(Internship, slug: slug)
 
   @doc """
   Creates a internship.
