@@ -14,7 +14,8 @@ config :estagiei, Oban,
     {Oban.Plugins.Cron,
      crontab: [
        {"* * * * *", Estagiei.Workers.UspFearpWorker},
-       {"* * * * *", Estagiei.Workers.UspEescWorker}
+       {"* * * * *", Estagiei.Workers.UspEescWorker},
+       {"* * * * *", Estagiei.Workers.UnicampWorker}
      ]}
   ]
 
