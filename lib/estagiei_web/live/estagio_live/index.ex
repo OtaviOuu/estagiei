@@ -3,6 +3,8 @@ defmodule EstagieiWeb.EstagioLive.Index do
   alias Estagiei.Internships
 
   def mount(_params, _session, socket) do
+    if connected?(socket), do: Internships.subscribe_to_new_internship_events()
+
     search_form = to_form(%{"search" => ""})
 
     socket =
@@ -68,6 +70,10 @@ defmodule EstagieiWeb.EstagioLive.Index do
   def handle_event("search", %{"search" => search}, socket) do
     new_list = Internships.list_internships(search: search)
     {:noreply, assign(socket, :internships, new_list)}
+  end
+
+  def handle_info({:new_internship, _internship}, socket) do
+    {:noreply, assign(socket, :internships, Internships.list_internships())}
   end
 
   defp format_date(date) do
