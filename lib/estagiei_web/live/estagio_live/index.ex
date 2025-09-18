@@ -41,7 +41,8 @@ defmodule EstagieiWeb.EstagioLive.Index do
               :for={internship <- @internships}
               phx-click="handle_job_click"
               phx-value-slug={internship.slug}
-              class="hover cursor-pointer hover:bg-base-200"
+              phx-mounted={JS.add_class("animate-fade-in")}
+              class="hover cursor-pointer hover:bg-base-200 transition-all"
             >
               <td>
                 {internship.title}
