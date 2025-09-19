@@ -20,10 +20,14 @@ defmodule Estagiei.Internships.Repositories.InternshipRepository do
   def list_internships(opts \\ []) do
     case Keyword.get(opts, :search) do
       nil ->
-        Repo.all(Internship)
+        Internship
+        |> order_by(desc: :inserted_at)
+        |> Repo.all()
 
       "" ->
-        Repo.all(Internship)
+        Internship
+        |> order_by(desc: :inserted_at)
+        |> Repo.all()
 
       search ->
         like_pattern = "%#{search}%"

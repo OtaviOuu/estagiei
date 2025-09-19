@@ -1,7 +1,7 @@
-defmodule EstagieiWeb.PageController do
+defmodule EstagieiWeb.RedirectController do
   use EstagieiWeb, :controller
 
-  def home(conn, _params) do
-    render(conn, :home)
+  def to_index(conn, _params) do
+    redirect(conn, to: ~p"/estagios")
   end
 end
