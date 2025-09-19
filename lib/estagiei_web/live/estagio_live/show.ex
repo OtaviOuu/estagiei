@@ -13,9 +13,19 @@ defmodule EstagieiWeb.EstagioLive.Show do
       <.link patch={~p"/estagios"}>
         <button class="btn btn-outline btn-info mb-4">&larr; Voltar</button>
       </.link>
-      <h1>{@internship.title}</h1>
-      <.description :if={@internship.description} internship={@internship} />
-      <.pdf :if={!@internship.description} internship={@internship} />
+      <div>
+        <a
+          href={@internship.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hover:no-underline hover:text-white hover:bg-info rounded transition-colors px-2 py-1 mb-4 inline-block"
+        >
+          {@internship.url}
+        </a>
+        <h1>{@internship.title}</h1>
+        <.description :if={@internship.description} internship={@internship} />
+        <.pdf :if={!@internship.description} internship={@internship} />
+      </div>
     </Layouts.app>
     """
   end
