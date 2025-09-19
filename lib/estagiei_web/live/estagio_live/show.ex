@@ -10,9 +10,9 @@ defmodule EstagieiWeb.EstagioLive.Show do
   def render(assigns) do
     ~H"""
     <Layouts.app flash={@flash}>
-      <button class="btn btn-outline btn-info mb-4">
-        <.link patch={~p"/estagios"}>&larr; Voltar</.link>
-      </button>
+      <.link patch={~p"/estagios"}>
+        <button class="btn btn-outline btn-info mb-4">&larr; Voltar</button>
+      </.link>
       <h1>{@internship.title}</h1>
       <.description :if={@internship.description} internship={@internship} />
       <.pdf :if={!@internship.description} internship={@internship} />
