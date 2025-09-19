@@ -36,21 +36,9 @@ defmodule EstagieiWeb.Layouts do
   def app(assigns) do
     ~H"""
     <div class="navbar bg-base-100 ">
-      <div class="flex-1">
-        <.link navigate={~p"/estagios"} class="btn btn-ghost text-xl">NomeBOM</.link>
-      </div>
       <div class="flex-none">
         <ul class="menu menu-horizontal px-1">
-          <li><a>Link</a></li>
-          <li>
-            <details>
-              <summary>Parent</summary>
-              <ul class="bg-base-100 rounded-t-none p-2">
-                <li><a>Link 1</a></li>
-                <li><a>Link 2</a></li>
-              </ul>
-            </details>
-          </li>
+          <li><.link navigate={~p"/estagios"}>Home</.link></li>
         </ul>
       </div>
     </div>
