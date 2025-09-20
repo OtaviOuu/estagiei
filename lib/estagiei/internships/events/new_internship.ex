@@ -1,6 +1,6 @@
 defmodule Estagiei.Internships.Events.NewInternship do
   alias Estagiei.Internships.Entities.Internship
-
+  alias Estagiei.Events
   @topic "new_intership"
 
   def subscribe do
@@ -8,6 +8,6 @@ defmodule Estagiei.Internships.Events.NewInternship do
   end
 
   def broadcast(%Internship{} = internship) do
-    Phoenix.PubSub.broadcast(Estagiei.PubSub, @topic, {:new_internship, internship})
+    Phoenix.PubSub.broadcast(Estagiei.PubSub, @topic, Events.new(:new_internship, internship))
   end
 end
