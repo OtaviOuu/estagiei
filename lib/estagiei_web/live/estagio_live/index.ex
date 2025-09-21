@@ -36,9 +36,6 @@ defmodule EstagieiWeb.EstagioLive.Index do
               <td>Views</td>
             </tr>
           </thead>
-          <pre>
-            {@aaa}
-          </pre>
           <tbody id="internships-table" phx-update="stream">
             <tr
               :for={{dom_id, internship} <- @streams.internships}
