@@ -29,7 +29,7 @@ defmodule Estagiei.Internships.Repositories.InternshipRepository do
         |> order_by(desc: :inserted_at)
         |> Repo.all()
 
-      search ->
+      search when is_binary(search) ->
         like_pattern = "%#{search}%"
 
         Internship
