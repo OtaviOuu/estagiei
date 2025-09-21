@@ -4,7 +4,6 @@ defmodule Estagiei.Workers.UspEescWorker do
   alias Estagiei.Crawlers.Core.UspEesc.ExtractAllJobs
   alias Estagiei.Crawlers.FilterForNewJobs
   alias Estagiei.Internships
-  alias Estagiei.Repo
 
   @impl Oban.Worker
   def perform(_args) do
@@ -12,22 +11,7 @@ defmodule Estagiei.Workers.UspEescWorker do
       ExtractAllJobs.call()
       |> FilterForNewJobs.call()
 
-    Repo.transact(fn ->
-      jobs_attrs
-      |> Enum.each(&create_internship_and_broadcast/1)
-
-      {:ok, :done}
-    end)
-  end
-
-  defp create_internship_and_broadcast(attrs) do
-    case Internships.create_internship(attrs) do
-      {:ok, internship} ->
-        Estagiei.Internships.Events.NewInternship.broadcast(internship)
-        {:ok, internship}
-
-      error ->
-        error
-    end
+    jobs_attrs
+    |> Enum.each(&Internships.create_internship/1)
   end
 end

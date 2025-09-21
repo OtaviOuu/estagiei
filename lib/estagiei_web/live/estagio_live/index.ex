@@ -10,7 +10,7 @@ defmodule EstagieiWeb.EstagioLive.Index do
     socket =
       socket
       |> assign(:search_form, search_form)
-      |> assign(:internships, Internships.list_internships())
+      |> stream(:internships, Internships.list_internships())
 
     {:ok, socket}
   end
@@ -36,10 +36,14 @@ defmodule EstagieiWeb.EstagioLive.Index do
               <td>Views</td>
             </tr>
           </thead>
-          <tbody>
+          <pre>
+            {@aaa}
+          </pre>
+          <tbody id="internships-table" phx-update="stream">
             <tr
-              :for={internship <- @internships}
+              :for={{dom_id, internship} <- @streams.internships}
               phx-click="handle_job_click"
+              id={"#{dom_id}"}
               phx-value-slug={internship.slug}
               phx-mounted={JS.add_class("animate-fade-in")}
               class="hover cursor-pointer hover:bg-base-200 transition-all"
@@ -73,8 +77,8 @@ defmodule EstagieiWeb.EstagioLive.Index do
     {:noreply, assign(socket, :internships, new_list)}
   end
 
-  def handle_info({:new_internship, _internship}, socket) do
-    {:noreply, assign(socket, :internships, Internships.list_internships())}
+  def handle_info({:new_internship, internship}, socket) do
+    {:noreply, stream_insert(socket, :internships, internship, at: 0)}
   end
 
   defp format_date(date) do

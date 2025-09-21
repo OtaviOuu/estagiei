@@ -1,13 +1,14 @@
 defmodule Estagiei.Internships.Events.NewInternship do
-  alias Estagiei.Internships.Entities.Internship
-  alias Estagiei.Events
   @topic "new_intership"
-
+  @pubsub Estagiei.PubSub
   def subscribe do
-    Phoenix.PubSub.subscribe(Estagiei.PubSub, @topic)
+    Phoenix.PubSub.subscribe(@pubsub, @topic)
   end
 
-  def broadcast(%Internship{} = internship) do
-    Phoenix.PubSub.broadcast(Estagiei.PubSub, @topic, Events.new(:new_internship, internship))
+  def broadcast({:error, _reason} = error), do: error
+
+  def broadcast({:ok, internship} = result) do
+    Phoenix.PubSub.broadcast(@pubsub, @topic, {:new_internship, internship})
+    result
   end
 end

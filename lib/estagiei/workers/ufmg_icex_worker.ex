@@ -3,18 +3,13 @@ defmodule Estagiei.Workers.UfmgIcexWorker do
 
   alias Estagiei.Crawlers.Core.UfmgIcex.ExtractAllJobs
   alias Estagiei.Internships
-  alias Estagiei.Repo
 
   @impl Oban.Worker
   def perform(_args) do
     {:ok, jobs_attrs} =
       ExtractAllJobs.call()
 
-    Repo.transact(fn ->
-      jobs_attrs
-      |> Enum.each(&Internships.create_internship/1)
-
-      {:ok, jobs_attrs}
-    end)
+    jobs_attrs
+    |> Enum.each(&Internships.create_internship/1)
   end
 end

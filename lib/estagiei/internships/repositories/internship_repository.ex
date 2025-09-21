@@ -71,7 +71,8 @@ defmodule Estagiei.Internships.Repositories.InternshipRepository do
   def create_internship(attrs) do
     %Internship{}
     |> Internship.changeset(attrs)
-    |> Repo.insert(on_conflict: :nothing, conflict_target: :slug)
+    |> Repo.insert(on_conflict: :raise)
+    |> Estagiei.Internships.Events.NewInternship.broadcast()
   end
 
   @doc """
