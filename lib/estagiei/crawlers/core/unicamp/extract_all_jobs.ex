@@ -29,7 +29,7 @@ defmodule Estagiei.Crawlers.Core.Unicamp.ExtractAllJobs do
          {:ok, job_tree} <- Floki.parse_document(job_html) do
       description =
         job_tree
-        |> Floki.find(".flex.flex-col.gap-10")
+        |> Floki.find(".2xl:px-32.fhd:px-64.xl:px-20.px-6.py-10.w-full")
         |> Floki.raw_html()
 
       title =
